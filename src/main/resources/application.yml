@@ -1,4 +1,8 @@
 spring:
+  task:
+    scheduling:
+      pool:
+        size: 10
   freemarker:
     #tpl模板文件的路径
     template-loader-path: classpath:/templates
@@ -33,10 +37,10 @@ spring:
           enabled: true
           paths: /**
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/test_db?characterEncoding=utf8&useUnicode=true&autoReconnect=true
+    url: jdbc:mysql://10.0.251.50:3306/lwz_test?characterEncoding=utf8&useUnicode=true&autoReconnect=true
     username: root
-    password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
+    password: 1234qwer
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
     show-sql: true

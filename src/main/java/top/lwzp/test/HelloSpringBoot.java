@@ -10,7 +10,6 @@ import javax.swing.*;
 
 @SpringBootApplication
 @RestController
-@EnableScheduling
 public class HelloSpringBoot {
     @RequestMapping("/hello")
     public String hello(){
