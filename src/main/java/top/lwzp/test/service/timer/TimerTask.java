@@ -13,4 +13,8 @@ public class TimerTask {
     private void taskFixedDelay(){
         System.out.println("定时任务执行中");
     }
+    @Scheduled(fixedRate = 36000000)
+    private void taskFixedRate(){
+        System.out.println("定时任务");
+    }
 }
