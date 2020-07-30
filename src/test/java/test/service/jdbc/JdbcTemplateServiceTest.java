@@ -33,6 +33,6 @@ public class JdbcTemplateServiceTest {
 //        jdbcTemplateService.testDel();
 //        jdbcTemplateService.testUpdate();
 //        jdbcTemplateService.testQueryForList();
-//        jdbcTemplateService.testQueryVoList();
+        jdbcTemplateService.testQueryVoList();
     }
 }
