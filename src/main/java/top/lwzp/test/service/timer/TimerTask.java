@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-@EnableScheduling
+//@EnableScheduling
 public class TimerTask {
     @Async
     @Scheduled(cron = "*/5 * * * * ?")
