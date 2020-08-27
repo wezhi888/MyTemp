@@ -8,6 +8,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import top.lwzp.test.service.rest_template.RestTemplateService;
+import top.lwzp.test.service.spring.SpringUtil;
 
 import javax.swing.*;
 
@@ -15,18 +17,11 @@ import javax.swing.*;
 @RestController
 @EnableAsync
 public class HelloSpringBoot {
-    @RequestMapping("/hello")
-    public String hello(){
-        return "helloworld";
-    }
-    private ApplicationContext context;
-    @Autowired
-    public void setContext(ApplicationContext context) {
-        this.context = context;
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(HelloSpringBoot.class,args);
-
+        RestTemplateService re = SpringUtil.getBean(RestTemplateService.class);
+        String s = re.get("http://center.hub.tjyun.com/enorth-screen/r/screen_api/v1.0/api/centralMedia", null);
+        System.out.println(s);
     }
 }
