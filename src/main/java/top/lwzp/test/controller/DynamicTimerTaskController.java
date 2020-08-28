@@ -23,7 +23,10 @@ public class DynamicTimerTaskController {
 
     @Bean
     public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
-        return new ThreadPoolTaskScheduler();
+        ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
+        //因为默认是单线程运行定时任务，所以这设置最多包含10线程的线程池
+        threadPoolTaskScheduler.setPoolSize(10);
+        return threadPoolTaskScheduler;
     }
 
     @RequestMapping("/startCron")

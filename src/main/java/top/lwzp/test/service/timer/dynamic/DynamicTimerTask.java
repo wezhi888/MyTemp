@@ -1,17 +1,21 @@
 package top.lwzp.test.service.timer.dynamic;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.CronTask;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.scheduling.support.CronTrigger;
 
-@RestController
-@Component
+@Configuration
 public class DynamicTimerTask implements SchedulingConfigurer {
+    private static int i;
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
-        scheduledTaskRegistrar.addCronTask(new CronTask(getRunable(),"*/5 * * * * ?"));
+        String cron = "*/i * * * * ?";
+        cron = cron.replace("i",++i + "");
+        System.out.println(i);
+        String finalCron = cron;
+        scheduledTaskRegistrar.addTriggerTask(getRunable(), triggerContext -> new CronTrigger(finalCron).nextExecutionTime(triggerContext));
     }
 
     private Runnable getRunable() {
