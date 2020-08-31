@@ -6,23 +6,25 @@ import org.springframework.scheduling.config.CronTask;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
 
+import java.time.Instant;
+
 @Configuration
 public class DynamicTimerTask implements SchedulingConfigurer {
-    private static int i;
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
-        String cron = "*/i * * * * ?";
-        cron = cron.replace("i",++i + "");
-        System.out.println(i);
-        String finalCron = cron;
-        scheduledTaskRegistrar.addTriggerTask(getRunable(), triggerContext -> new CronTrigger(finalCron).nextExecutionTime(triggerContext));
+        scheduledTaskRegistrar.addTriggerTask(getRunable(), triggerContext -> new CronTrigger(getCron()).nextExecutionTime(triggerContext));
+    }
+
+    private String getCron() {
+        String cron = "*/5 * * * * ?";
+        return cron;
     }
 
     private Runnable getRunable() {
         return new Runnable() {
             @Override
             public void run() {
-                System.out.println(111);
+                System.out.println(Instant.now());
             }
         };
     }
