@@ -17,6 +17,6 @@ public class TemplateController {
         list.add("tomcat");
         list.add("tomdog");
         map.put("listResult",list);
-        return "demo";
+        return "freemarker/demo";
     }
 }

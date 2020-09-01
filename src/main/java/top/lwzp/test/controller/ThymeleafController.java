@@ -12,7 +12,7 @@ import java.util.List;
 public class ThymeleafController {
     @RequestMapping("/thymeleaf")
     public ModelAndView thymeleafDemo(ModelAndView mav){
-        mav.setViewName("/thymeleaf");//此处指向模板文件
+        mav.setViewName("/thymeleaf/thymeleaf");//此处指向模板文件
         mav.addObject("user","张三");
         List<String> books = new ArrayList<>();
         books.add("huaxue");
@@ -28,6 +28,6 @@ public class ThymeleafController {
         books.add("huaxue");
         books.add("wuli");
         m.addAttribute("books",books);
-        return "/thymeleaf";
+        return "/thymeleaf/thymeleaf";
     }
 }

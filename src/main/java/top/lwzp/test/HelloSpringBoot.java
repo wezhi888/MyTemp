@@ -15,8 +15,8 @@ import top.lwzp.test.service.spring.SpringUtil;
 import javax.swing.*;
 
 @SpringBootApplication
-@EnableScheduling
-@EnableAsync
+//@EnableScheduling
+//@EnableAsync
 public class HelloSpringBoot {
 
     public static void main(String[] args) {
