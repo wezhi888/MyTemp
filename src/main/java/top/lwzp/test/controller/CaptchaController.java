@@ -1,5 +1,6 @@
 package top.lwzp.test.controller;
 
+import com.wf.captcha.ChineseCaptcha;
 import com.wf.captcha.GifCaptcha;
 import com.wf.captcha.utils.CaptchaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,14 @@ public class CaptchaController extends BaseController {
     @RequestMapping("/captcha")
     public void checkCaptcha(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //设置位数
-        CaptchaUtil.out(6,request, response);
+//        CaptchaUtil.out(4,request, response);
         //默认宽高是130/48.如果指定验证码图片的宽、高和位数。宽高应该和HTML页面相适应
 //        CaptchaUtil.out(180,60,5,request,response);
         //使用git验证码
-//        GifCaptcha gifCaptcha = new GifCaptcha(130,48,4);
-//        CaptchaUtil.out(gifCaptcha,request,response);
+//        GifCaptcha captcha = new GifCaptcha(130,48,4);
+        //使用中文图片验证码
+        ChineseCaptcha captcha = new ChineseCaptcha(130,48,4);
+        CaptchaUtil.out(captcha,request,response);
     }
 
     @RequestMapping("/captcha/index")
