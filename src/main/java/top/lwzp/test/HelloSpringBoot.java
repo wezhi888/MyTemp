@@ -22,7 +22,7 @@ public class HelloSpringBoot {
     public static void main(String[] args) {
         SpringApplication.run(HelloSpringBoot.class,args);
         RestTemplateService re = SpringUtil.getBean(RestTemplateService.class);
-        String url = "http://centers.hub.tjyun.com/enorth-screen/r/screen_api/v1.0/api/centralMedia";
+        String url = "";
         String s = re.getForEntity(url);
         System.out.println(s);
         System.exit(-1);
