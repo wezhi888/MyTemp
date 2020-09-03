@@ -9,6 +9,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import top.lwzp.test.service.spring.SpringUtil;
+import top.lwzp.test.vo.RestTemplateTestVo;
 
 import java.util.Map;
 
@@ -38,5 +39,10 @@ public class RestTemplateService {
     public String getForEntity(String url){
         ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
         return entity.getBody();
+    }
+
+    public RestTemplateTestVo getForObject(String url){
+        RestTemplateTestVo vo = restTemplate.getForObject(url, RestTemplateTestVo.class);
+        return vo;
     }
 }
