@@ -35,7 +35,6 @@ public class HelloSpringBoot {
             */
             RestTemplate restTemplate = SpringUtil.getBean(RestTemplate.class);
             String url = "http://localhost:8080/post?pa=sss";
-
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             MultiValueMap<String,String> params = new LinkedMultiValueMap<>();
@@ -43,7 +42,6 @@ public class HelloSpringBoot {
             params.add("age","21");
             HttpEntity<MultiValueMap<String,String>> request = new HttpEntity<>(params,headers);
             ResponseEntity<String> entity = restTemplate.postForEntity(url,request,String.class,params);
-            HttpStatus statusCode = entity.getStatusCode();
             System.out.println(entity.getBody());
         } catch (Exception e){
             e.printStackTrace();
