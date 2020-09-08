@@ -2,6 +2,7 @@ package top.lwzp.test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,26 +29,31 @@ public class HelloSpringBoot {
     public static void main(String[] args) {
         //启动SpringBoot
         SpringApplication.run(HelloSpringBoot.class,args);
-        try {
-            /*
-            获取RestTemplateService类中定义的restTemplate bean
-            如果RestTemplate没有交给Spring托管，也可以用new获取对象
-            */
-            RestTemplate restTemplate = SpringUtil.getBean(RestTemplate.class);
-            String url = "http://localhost:8080/post?pa=sss";
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            MultiValueMap<String,String> params = new LinkedMultiValueMap<>();
-            params.add("name","王五");
-            params.add("age","21");
-            HttpEntity<MultiValueMap<String,String>> request = new HttpEntity<>(params,headers);
-            ResponseEntity<String> entity = restTemplate.postForEntity(url,request,String.class,params);
-            System.out.println(entity.getBody());
-        } catch (Exception e){
-            e.printStackTrace();
-        } finally {
-            System.exit(0);
-        }
+//        try {
+//            RestTemplate restTemplate = SpringUtil.getBean(RestTemplate.class);
+//            String url = "http://localhost:8080/post";
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+////            ObjectMapper mapper = new ObjectMapper();
+////            ObjectNode objectNode = mapper.createObjectNode();
+////            objectNode.put("name","zhangsan");
+////            objectNode.put("age",30);
+////            HttpEntity<String> request = new HttpEntity<>(objectNode.toString(),headers);
+////            ResponseEntity<String> entity = restTemplate.exchange(url,HttpMethod.POST,request,String.class);
+//
+//
+//            MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+//            map.add("name","sansan");
+//            map.add("age","78");
+//            HttpEntity<MultiValueMap<String,String>> he = new HttpEntity<>(map,headers);
+//            ResponseEntity<String> entity = restTemplate.exchange(url,HttpMethod.POST,he,String.class);
+//
+//            System.out.println(entity.getBody() + "--------------");
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        } finally {
+//            System.exit(0);
+//        }
 
 
     }
