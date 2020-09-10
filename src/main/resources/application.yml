@@ -1,3 +1,6 @@
+jasypt:
+  encryptor:
+    password: EbfYkitulv73I2p0mXI50JMXoaxZTKJ7
 spring:
   task:
     scheduling:
@@ -38,8 +41,8 @@ spring:
           paths: /**
   datasource:
     url: jdbc:mysql://10.0.251.50:3306/lwz_test?characterEncoding=utf8&useUnicode=true&autoReconnect=true
-    username: root
-    password: 1234qwer
+    username: ENC(Y912z9Ma4jrm+yFLJINH2Q==)
+    password: ENC(T1RUCTqEafZ+8Y4ItWwQ3CXpsaW14wx0)
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       #2.连接池配置
