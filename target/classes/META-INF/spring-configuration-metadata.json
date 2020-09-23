@@ -1,0 +1,63 @@
+{
+  "groups": [
+    {
+      "name": "dog",
+      "type": "top.lwzp.test.vo.Dog",
+      "sourceType": "top.lwzp.test.vo.Dog"
+    },
+    {
+      "name": "user",
+      "type": "top.lwzp.test.vo.User",
+      "sourceType": "top.lwzp.test.vo.User"
+    }
+  ],
+  "properties": [
+    {
+      "name": "dog.age",
+      "type": "java.lang.Integer",
+      "sourceType": "top.lwzp.test.vo.Dog"
+    },
+    {
+      "name": "dog.name",
+      "type": "java.lang.String",
+      "sourceType": "top.lwzp.test.vo.Dog"
+    },
+    {
+      "name": "user.age",
+      "type": "java.lang.Integer",
+      "sourceType": "top.lwzp.test.vo.User"
+    },
+    {
+      "name": "user.birth",
+      "type": "java.util.Date",
+      "sourceType": "top.lwzp.test.vo.User"
+    },
+    {
+      "name": "user.boss",
+      "type": "java.lang.Boolean",
+      "sourceType": "top.lwzp.test.vo.User",
+      "defaultValue": false
+    },
+    {
+      "name": "user.dog",
+      "type": "top.lwzp.test.vo.Dog",
+      "sourceType": "top.lwzp.test.vo.User"
+    },
+    {
+      "name": "user.last-name",
+      "type": "java.lang.String",
+      "sourceType": "top.lwzp.test.vo.User"
+    },
+    {
+      "name": "user.lists",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "top.lwzp.test.vo.User"
+    },
+    {
+      "name": "user.maps",
+      "type": "java.util.Map<java.lang.String,java.lang.Object>",
+      "sourceType": "top.lwzp.test.vo.User"
+    }
+  ],
+  "hints": []
+}

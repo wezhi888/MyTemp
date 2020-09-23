@@ -1,0 +1,94 @@
+jasypt:
+  encryptor:
+    password: EbfYkitulv73I2p0mXI50JMXoaxZTKJ7
+spring:
+  task:
+    scheduling:
+      pool:
+        size: 10
+  freemarker:
+    #tpl模板文件的路径
+    template-loader-path: classpath:/templates
+    #关闭缓存，以便每次拿到最新的结果
+    cache: false
+    #tpl文件的编码格式
+    charset: UTF-8
+    #检查模板文件目录是否存在
+    check-template-location: true
+    content-type: text/html
+    #设置所有request、session的属性在merger到模板的时候，是否都要添加到model中，一般web项目可能要设置为true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    #指定request context属性的名称
+    request-context-attribute: request
+    #设定模板的后缀
+    suffix: .ftl
+  thymeleaf:
+    #模板文件路径
+    prefix: classpath:/templates
+    #模板文件后缀
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+  datasource:
+    url: jdbc:mysql://10.0.251.50:3306/lwz_test?characterEncoding=utf8&useUnicode=true&autoReconnect=true
+    username: ENC(Y912z9Ma4jrm+yFLJINH2Q==)
+    password: ENC(T1RUCTqEafZ+8Y4ItWwQ3CXpsaW14wx0)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      #2.连接池配置
+      #初始化连接池的连接数量 大小，最小，最大
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      #配置获取连接等待超时的时间
+      max-wait: 60000
+      #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 30000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: false
+      # 是否缓存preparedStatement，也就是PSCache  官方建议MySQL下建议关闭   个人建议如果想用SQL防火墙 建议打开
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filter:
+        stat:
+          merge-sql: true
+          slow-sql-millis: 5000
+      #3.基础监控配置
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        #设置不统计哪些URL
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        session-stat-enable: true
+        session-stat-max-count: 100
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        #设置监控页面的登录名和密码
+        login-username: admin
+        login-password: admin
+        allow: 127.0.0.1
+        #deny: 192.168.1.100
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+logging:
+  config: classpath:logback-spring.xml
